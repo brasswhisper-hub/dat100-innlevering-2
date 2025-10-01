@@ -4,17 +4,19 @@ public class Matriser {
 
 	// a)
 	public static void skrivUt(int[][] matrise) {
-		System.out.println(tilStreng(matrise));
+		System.out.print(tilStreng(matrise));
 	}
 
 	// b)
 	public static String tilStreng(int[][] matrise) {
 		String streng = "";
-		
-		for ( int i = 0; i < matrise.length; i++) {
-			for ( int j = 0; j < matrise[i].length; j++) {
-				streng += matrise[i][j] + " ";
+
+		for ( int[] i : matrise) {
+			
+			for ( int j : i) {
+				streng += j + " ";
 			}
+			
 			streng += "\n";
 		}
 
@@ -64,18 +66,44 @@ public class Matriser {
 	
 	// e)
 	public static int[][] speile(int[][] matrise) {
+		int[][] matrix = new int[matrise.length][matrise[0].length];
 
-		// TODO
+		for ( int i = 0; i < matrise.length; i++) {
+			for ( int j = 0; j < matrise[i].length; j++) {
+				matrix[j][i] = matrise[i][j];
+			}
+		}
 
-		throw new UnsupportedOperationException("Metoden speile ikke implementert");
-	
+		return matrix;
 	}
 
 	// f)
 	public static int[][] multipliser(int[][] a, int[][] b) {
+		int[][] c = new int[b.length][a[0].length];
 
-		// TODO
-		throw new UnsupportedOperationException("Metoden multipliser ikke implementert");
-	
+		for ( int m = 0; m < c.length; m++) {
+			for ( int p = 0; p < c[m].length; p++) {
+				c[m][p] = 0;
+			}
+		}
+		
+		for ( int m = 0; m < c.length; m++) {
+			for ( int p = 0; p < c[m].length; p++) {
+				for ( int n = 0; n < b.length; n++) {
+					c[m][p] += a[m][n] * b[n][p];
+				}
+			}
+		}
+
+		/* All cap. Dette gjor at eg endelig forsto matrisemultiplikasjon
+		// uten å måtte sette det opp i en formel. Det e jo bare:
+		//		
+		// m x n ===> a[m][n]
+		// n x p ===> b[n][p]
+		// m x p ===> c[m][p] = a[m][n] * b[n][p];
+		// 
+		*/ 
+
+		return c;
 	}
 }
