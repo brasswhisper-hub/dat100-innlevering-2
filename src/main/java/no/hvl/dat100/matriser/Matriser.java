@@ -79,12 +79,18 @@ public class Matriser {
 
 	// f)
 	public static int[][] multipliser(int[][] a, int[][] b) {
+
+		
 		int[][] c = new int[b.length][a[0].length];
 
 		for ( int m = 0; m < c.length; m++) {
 			for ( int p = 0; p < c[m].length; p++) {
 				c[m][p] = 0;
 			}
+		}
+
+		if (a[0].length != b.length) {
+			return c;
 		}
 		
 		for ( int m = 0; m < c.length; m++) {
