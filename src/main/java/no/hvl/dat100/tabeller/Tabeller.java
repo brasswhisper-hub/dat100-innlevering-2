@@ -9,7 +9,12 @@ public class Tabeller {
 
 	// b)
 	public static String tilStreng(int[] tabell) {
-        String streng ="[" + tabell[0];
+        
+		if (tabell.length <= 0) {
+			return "[]";
+		}
+
+		String streng ="[" + tabell[0];
 
         for (int i = 1; i < tabell.length; i++) {
             streng += "," + tabell[i];
